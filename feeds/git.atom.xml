@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Blog - Git</title><link href="/" rel="alternate"></link><link href="/feeds/git.atom.xml" rel="self"></link><id>/</id><updated>2024-06-17T19:30:00-03:00</updated><subtitle>Priscyla - Developer</subtitle><entry><title>Guia Completo do Git para Desenvolvedores: Dominando o Controle de Versão</title><link href="/dominando-git-pt.html" rel="alternate"></link><published>2024-06-10T10:20:00-03:00</published><updated>2024-06-17T19:30:00-03:00</updated><author><name>Priscyla Santos</name></author><id>tag:None,2024-06-10:/dominando-git-pt.html</id><summary type="html">&lt;p&gt;No mundo do desenvolvimento de software, o Git é uma ferramenta indispensável para controle de versão e colaboração. Como desenvolvedora&lt;/p&gt;</summary><content type="html">&lt;style&gt;body {text-align: justify}&lt;/style&gt;
+
+&lt;p&gt;No mundo do desenvolvimento de software, o Git é uma ferramenta indispensável para controle de versão e colaboração. Como desenvolvedora, utilizo o Git diariamente para gerenciar projetos com eficiência. Este artigo é um guia prático, desmistificando comandos essenciais do Git para desenvolvedores de todos os níveis.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Criando um Repositório&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Do zero - Criar um novo repositório local:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;init&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;nome_do_projeto&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para começar um novo projeto, utilize o comando &lt;code&gt;git init&lt;/code&gt;. Isso cria um novo repositório Git em um diretório vazio. Exemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;init&lt;span class="w"&gt; &lt;/span&gt;meu_projeto
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Isso inicializa um repositório vazio no diretório "meu_projeto".&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Baixar de um repositório existente:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;clone&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;url_do_repositório&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para obter uma cópia de um projeto já existente, use &lt;code&gt;git clone&lt;/code&gt; seguido da URL do repositório:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;clone&lt;span class="w"&gt; &lt;/span&gt;https://github.com/usuario/projeto.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Isso cria uma cópia completa do repositório em seu sistema local.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Observando Seu Repositório&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Listar novos arquivos ou arquivos modificados ainda não comitados:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;status
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;O comando &lt;code&gt;git status&lt;/code&gt; é usado para verificar o status do repositório. Ele mostra quais arquivos foram modificados e quais estão prontos para serem comitados.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mostrar as mudanças em arquivos que ainda não foram 'stageados':&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;diff
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para ver as mudanças realizadas em arquivos antes de prepará-los para o commit, utilize &lt;code&gt;git diff&lt;/code&gt;. Este comando mostra as diferenças entre seu diretório de trabalho e a área de staging.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mostrar as mudanças em arquivos 'stageados':&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;diff&lt;span class="w"&gt; &lt;/span&gt;--cached
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Depois de usar &lt;code&gt;git add&lt;/code&gt;, você pode ver as mudanças preparadas para commit com &lt;code&gt;git diff --cached&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mostrar todas as mudanças (stageadas e não stageadas):&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;diff&lt;span class="w"&gt; &lt;/span&gt;HEAD
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para visualizar todas as alterações no seu repositório, tanto as preparadas quanto as não preparadas para commit, use &lt;code&gt;git diff HEAD&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mostrar diferenças entre dois commits:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;diff&lt;span class="w"&gt; &lt;/span&gt;commit1&lt;span class="w"&gt; &lt;/span&gt;commit2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Se precisar comparar dois commits específicos, &lt;code&gt;git diff commit1 commit2&lt;/code&gt; mostra as diferenças entre eles.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Listar alterações e autores para um arquivo:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;blame&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;arquivo&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Quer saber quem fez o quê em um arquivo? &lt;code&gt;git blame&lt;/code&gt; mostra o autor de cada linha de um arquivo, útil para rastrear mudanças.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mostrar as mudanças de um commit para um arquivo específico:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;show&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;commit&lt;span class="o"&gt;]&lt;/span&gt;:&lt;span class="o"&gt;[&lt;/span&gt;arquivo&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para ver as alterações de um commit específico em um arquivo, use &lt;code&gt;git show&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mostrar o histórico completo de commits:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;log
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;O comando &lt;code&gt;git log&lt;/code&gt; exibe o histórico de commits do repositório, incluindo mensagens de commit, autores e datas.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mostrar o histórico de mudanças para um arquivo ou diretório específico, incluindo diffs:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;log&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;arquivo/diretório&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para um histórico detalhado com diferenças incluídas, use &lt;code&gt;git log -p&lt;/code&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Trabalhando com Branches&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Listar todas as branches locais:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;branch
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para ver todas as branches locais do seu repositório, &lt;code&gt;git branch&lt;/code&gt; lista elas.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Listar todas as branches, locais e remotas:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;branch&lt;span class="w"&gt; &lt;/span&gt;-av
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para uma visão completa de todas as branches, locais e remotas, use &lt;code&gt;git branch -av&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Alternar para uma branch e atualizar o diretório de trabalho:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;checkout&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;nome_da_branch&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para mudar de branch, use &lt;code&gt;git checkout&lt;/code&gt; seguido do nome da branch desejada.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Criar uma nova branch:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;branch&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;nova_branch&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Crie uma nova branch com &lt;code&gt;git branch&lt;/code&gt;, útil para iniciar novos recursos ou correções.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Deletar uma branch:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;branch&lt;span class="w"&gt; &lt;/span&gt;-d&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;branch&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para remover uma branch que não é mais necessária, utilize &lt;code&gt;git branch -d&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mesclar uma branch em outra:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;checkout&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;branch_b&lt;span class="o"&gt;]&lt;/span&gt;
+$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;merge&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;branch_a&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para mesclar mudanças de uma branch em outra, primeiro faça checkout da branch de destino, depois use &lt;code&gt;git merge&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Taguear o commit atual:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;tag&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;nome_da_tag&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para marcar um ponto específico na história do seu repositório, como uma versão lançada, use &lt;code&gt;git tag&lt;/code&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Fazendo Mudanças&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Preparar o arquivo para commit:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;arquivo&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para preparar um arquivo para commit, use &lt;code&gt;git add&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Preparar todos os arquivos modificados para commit:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para preparar todos os arquivos modificados no diretório atual, utilize &lt;code&gt;git add .&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Comitar todas as alterações 'stageadas' com uma mensagem:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;commit&lt;span class="w"&gt; &lt;/span&gt;-m&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;mensagem do commit&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para salvar suas alterações no histórico de commits, use &lt;code&gt;git commit&lt;/code&gt; com uma mensagem descritiva.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Comitar todas as alterações 'tracked' com uma mensagem:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;commit&lt;span class="w"&gt; &lt;/span&gt;-am&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;mensagem do commit&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para preparar e comitar todas as alterações em um único comando, use &lt;code&gt;git commit -am&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Desfazer o 'stage' de um arquivo, mantendo as alterações:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;reset&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;arquivo&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Se você preparou um arquivo por engano, &lt;code&gt;git reset&lt;/code&gt; remove-o da área de staging, mantendo as mudanças no diretório de trabalho.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Reverter tudo para o último commit:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;reset&lt;span class="w"&gt; &lt;/span&gt;--hard
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para desfazer todas as mudanças e retornar ao estado do último commit, use &lt;code&gt;git reset --hard&lt;/code&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Sincronização&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Obter as últimas mudanças da origem (sem mescla):&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;fetch
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para atualizar seu repositório local com as mudanças do repositório remoto, use &lt;code&gt;git fetch&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Obter as últimas mudanças da origem e mesclar:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;pull
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para buscar e mesclar as mudanças do repositório remoto em sua branch atual, use &lt;code&gt;git pull&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Obter as últimas mudanças da origem e rebasear:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;pull&lt;span class="w"&gt; &lt;/span&gt;--rebase
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para buscar as últimas mudanças e rebasear sua branch atual, use &lt;code&gt;git pull --rebase&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Enviar as mudanças locais para a origem:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;push
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para enviar suas mudanças locais para o repositório remoto, use &lt;code&gt;git push&lt;/code&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+&lt;p&gt;Dominar o Git é essencial para qualquer desenvolvedor. Com este guia, você está equipado para gerenciar seu código de forma eficiente e colaborar melhor com sua equipe. Para mais informações, consulte a documentação oficial do Git ou participe de treinamentos disponíveis no &lt;a href="https://training.github.com/"&gt;GitHub Training&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Quando estiver em dúvida, lembre-se de que a ajuda está sempre à mão:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;git&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;command&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--help
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Vamos melhorar nosso fluxo de trabalho e elevar a qualidade dos nossos projetos com Git! 🚀&lt;/p&gt;</content><category term="Git"></category><category term="git"></category><category term="versionamento"></category></entry></feed>

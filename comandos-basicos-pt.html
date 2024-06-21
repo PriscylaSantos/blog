@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>    Comandos básicos do Linux
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://localhost:8000/theme/css/cid.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+            <div class="container">
+
+<header class="blog-header">
+    <h1><a href="http://localhost:8000">Blog</a></h1>
+    <p> Priscyla - Developer </p>
+    <nav>
+        <a href="http://localhost:8000/">INDEX</a> |
+        <a href="http://localhost:8000/archives">ARQUIVOS</a> |
+        <a href="http://localhost:8000/categories">CATEGORIAS</a> |
+        <a href="http://localhost:8000/tags">TAGS</a>
+    </nav>
+</header>
+
+    <div class="post">
+
+        <header>
+            <h1>Comandos básicos do Linux</h1>
+            <small class="date">
+                Por <b>Priscyla Santos</b> em <time datetime="2024-02-26T10:20:00-03:00">26 fev de 2024 às 10h20.</time>
+                <br>Atualizado em <time datetime="2024-06-10T19:30:00-03:00">10 jun de 2024 às 19h30.</time>
+            </small>
+        </header>
+
+        <article>
+            <style>body {text-align: justify}</style>
+
+<h2>Introdução:</h2>
+<p>Este guia apresenta os comandos básicos do Linux para navegação em arquivos, informações do sistema, gerenciamento de arquivos, rede e outros utilitários.</p>
+<h2>Navegação e arquivos:</h2>
+<ul>
+<li><code>ls</code>: Lista todos os arquivos e pastas do diretório atual.</li>
+<li><code>cd</code>: Muda para o diretório especificado.</li>
+<li><code>pwd</code>: Mostra o diretório atual.</li>
+<li><code>mkdir</code>: Cria um novo diretório.</li>
+<li><code>rmdir</code>: Remove um diretório vazio.</li>
+<li><code>rm</code>: Remove um arquivo.</li>
+<li><code>cp</code>: Faz cópia de um arquivo.</li>
+<li><code>mv</code>: Move um arquivo ou renomeia-o.</li>
+<li><code>touch file</code>: Cria um novo arquivo vazio "file" ou atualiza a data de modificação de um arquivo existente.</li>
+<li><code>cat file</code>: Mostra o conteúdo de um arquivo.</li>
+<li><code>cat &gt;&gt; file</code>: Concatena a entrada padrão com o conteúdo de um arquivo.</li>
+<li><code>tail -f file</code>: Mostra o conteúdo de um arquivo à medida que ele é modificado.</li>
+</ul>
+<hr>
+<h3>1. ls</h3>
+<p>O comando <code>ls</code> significa <code>list</code> em inglês e é usado para listar arquivos e diretórios. É um dos comandos mais básicos e usados com frequência na linha de comando.</p>
+<p><strong>Função do comando ls:</strong></p>
+<ul>
+<li><strong>Listar os nomes de arquivos e diretórios</strong> em um determinado diretório.</li>
+<li>Mostrar informações adicionais sobre os arquivos, como tipo, tamanho, data de modificação e permissões.</li>
+<li>Ordenar os resultados por nome, tamanho, data ou outros critérios.</li>
+<li>Filtrar os resultados por nome, tipo, data ou outros critérios.</li>
+</ul>
+<p><strong>Opções do comando ls:</strong></p>
+<p>O comando ls possui diversas opções que podem ser usadas para personalizar a saída do comando. Algumas das opções mais comuns são:</p>
+<ul>
+<li><strong>-a:</strong> <code>all(todos)</code>. Lista todos os arquivos, incluindo arquivos ocultos.</li>
+<li><strong>-l:</strong> <code>long listing format(formato de listagem longa)</code>. Lista os arquivos e diretórios com detalhes extensivos, incluindo permissões, número de links, proprietário, grupo, tamanho, data de última modificação e nome</li>
+<li><strong>-r:</strong> <code>reverse(reverso)</code>. Ordena os resultados em ordem inversa.</li>
+<li><strong>-t:</strong> <code>time(tempo)</code>. Ordena os arquivos pela data de modificação, com os mais recentes primeiro.</li>
+<li><strong>-h:</strong> <code>human-readable(legível para humanos)</code>. Mostra o tamanho dos arquivos em um formato mais legível.</li>
+</ul>
+<p><strong>Exemplos de uso do comando ls:</strong></p>
+<ul>
+<li><strong>Listar o conteúdo do diretório atual:</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>ls
+</code></pre></div>
+
+<ul>
+<li><strong>Listar o conteúdo do diretório "/home/user":</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>ls /home/user
+</code></pre></div>
+
+<ul>
+<li><strong>Listar os arquivos com a extensão ".txt":</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>ls *.txt
+</code></pre></div>
+
+<ul>
+<li><strong>Listar os arquivos em ordem decrescente de tamanho:</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>ls -lS
+</code></pre></div>
+
+<ul>
+<li><strong>Mostrar informações detalhadas sobre um arquivo:</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>ls -l arquivo.txt
+</code></pre></div>
+
+<p><strong>Para mais informações sobre o comando ls, consulte a página de manual do comando via terminal:</strong></p>
+<div class="highlight"><pre><span></span><code>man ls
+</code></pre></div>
+
+<hr>
+<h3>2. cd</h3>
+<p>O comando <code>cd</code> significa <code>change directory (mudar diretório)</code> e é usado para navegar pelos diretórios do sistema operacional. É um dos comandos mais básicos e usados com frequência na linha de comando.</p>
+<p><strong>Função do comando cd:</strong></p>
+<ul>
+<li><strong>Mudar o diretório atual</strong> para o diretório especificado.</li>
+<li><strong>Listar os arquivos e diretórios</strong> do diretório atual.</li>
+<li><strong>Navegar para um diretório superior</strong> usando o comando "cd ..".</li>
+</ul>
+<p><strong>Opções do comando cd:</strong></p>
+<p>O comando cd possui algumas opções que podem ser usadas para personalizar seu uso. Algumas das opções mais comuns são:</p>
+<ul>
+<li><strong>-L:</strong> <code>logical(lógico)</code>. Se o diretório especificado for um link simbólico, muda para o diretório que o link aponta.</li>
+<li><strong>-P:</strong> <code>physical(físico)</code>. Se o diretório especificado for um link simbólico, muda para o diretório pai do link.</li>
+<li><strong>-V:</strong> <code>verbose(detalhado)</code>. Mostra informações detalhadas sobre o processo de mudança de diretório.</li>
+</ul>
+<p><strong>Exemplos de uso do comando cd:</strong></p>
+<ul>
+<li><strong>Mudar para o diretório "/home/usuario":</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>cd /home/usuario
+</code></pre></div>
+
+<ul>
+<li><strong>Listar o conteúdo do diretório atual:</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>ls
+</code></pre></div>
+
+<ul>
+<li><strong>Navegar para o diretório superior:</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>cd ..
+</code></pre></div>
+
+<p><strong>Para mais informações sobre o comando cd, consulte a página de manual do comando via terminal:</strong></p>
+<div class="highlight"><pre><span></span><code>man cd
+</code></pre></div>
+
+<hr>
+<h3>3. pwd</h3>
+<p>O comando <code>pwd</code> significa <code>print working directory</code> e é usado para mostrar o caminho completo do diretório no qual você está trabalhando.</p>
+<p><strong>Função do comando pwd:</strong></p>
+<ul>
+<li><strong>Não modifica nada no sistema.</strong> Ele apenas <strong>recupera e mostra o caminho absoluto</strong> do diretório no qual você está navegando.</li>
+<li><strong>Benefícios:</strong> Saber a localização exata ajuda você a entender sua posição atual na estrutura de diretórios e navegar de forma eficiente usando outros comandos como <code>cd</code> (mudar diretório).</li>
+<li><strong>Uso:</strong> Basta digitar <code>pwd</code> no terminal e pressionar Enter. Ele imprimirá o caminho completo do diretório atual na próxima linha.</li>
+</ul>
+<p><strong>Exemplo:</strong></p>
+<p>Se você estiver no diretório <code>/home/user/documentos</code>, digitar <code>pwd</code> e pressionar Enter mostrará:</p>
+<div class="highlight"><pre><span></span><code>/home/user/documentos
+</code></pre></div>
+
+<p><strong>Pontos adicionais:</strong></p>
+<ul>
+<li>"pwd" é um <strong>comando autônomo</strong> e não requer argumentos.</li>
+<li>É um comando <strong>frequentemente usado</strong>, especialmente para iniciantes que estão aprendendo a navegar na linha de comando.</li>
+</ul>
+<p><strong>Para mais informações sobre o comando pwd, consulte a página de manual do comando via terminal:</strong></p>
+<div class="highlight"><pre><span></span><code>man pwd
+</code></pre></div>
+
+<hr>
+<h3>5. mkdir</h3>
+<p>O comando <code>mkdir</code> significa  <code>make directory (criar diretório)</code>. É usado para criar novos diretórios (pastas) no sistema de arquivos.</p>
+<p><strong>Função do comando mkdir:</strong> 
+* <strong>Cria um novo diretório:</strong> Você especifica o nome e o local do diretório que deseja criar.
+* <strong>Organiza arquivos:</strong> Diretórios ajudam a organizar seus arquivos, agrupando-os por tipo, projeto ou qualquer outra categoria que seja útil para você.
+* <strong>Funciona em diferentes locais:</strong> Você pode criar diretórios no diretório atual, em subdiretórios existentes ou em qualquer outro local no sistema de arquivos, desde que tenha permissão para gravar naquele local.</p>
+<p><strong>Exemplo:</strong>
+Para criar um diretório chamado "Documentos" no diretório atual, você digitaria:</p>
+<div class="highlight"><pre><span></span><code>mkdir Documentos
+</code></pre></div>
+
+<p><strong>Observações:</strong></p>
+<ul>
+<li>Você precisa ter permissão de gravação no local onde deseja criar o diretório.</li>
+<li>O nome do diretório deve seguir as regras do sistema de arquivos, como não conter caracteres especiais restritos.</li>
+<li>O comando <code>mkdir</code> é um dos comandos básicos e mais usados para gerenciar arquivos e diretórios na linha de comando.</li>
+</ul>
+<p><strong>Para mais informações sobre o comando mkdir, consulte a página de manual do comando via terminal:</strong></p>
+<div class="highlight"><pre><span></span><code>man mkdir
+</code></pre></div>
+
+<hr>
+<h3>6. rmdir</h3>
+<p>O comando <code>rmdir</code> significa <code>remove directory(remover diretório)</code>. É utilizado para apagar diretórios vazios do sistema de arquivos.</p>
+<p><strong>Função do comando rmdir:</strong></p>
+<ul>
+<li><strong>Remove diretórios vazios:</strong> Ele somente pode remover diretórios que não contenham nenhum arquivo ou subdiretório dentro deles.</li>
+<li><strong>Organiza o sistema de arquivos:</strong> Ao remover diretórios desnecessários, você mantém seu sistema de arquivos organizado e evita o acúmulo de pastas vazias.</li>
+<li><strong>Funciona em diferentes locais:</strong> Você pode remover diretórios no diretório atual, em subdiretórios existentes ou em qualquer outro local no sistema de arquivos, desde que tenha permissão para gravar naquele local.</li>
+</ul>
+<p><strong>Exemplo:</strong></p>
+<p>Para remover um diretório chamado "Temporários" no diretório atual, você digitaria:</p>
+<div class="highlight"><pre><span></span><code>rmdir Temporários
+</code></pre></div>
+
+<p><strong>Observações importantes:</strong></p>
+<ul>
+<li><strong>Nunca use o <code>rmdir</code> com a opção para remover diretórios não vazios, pois isso pode levar à perda permanente de dados.</strong></li>
+<li>Certifique-se sempre de que o diretório esteja realmente vazio antes de tentar removê-lo.</li>
+<li>Você precisa ter permissão de gravação no diretório que deseja remover.</li>
+<li>O nome do diretório deve seguir as regras do sistema de arquivos.</li>
+</ul>
+<p><strong>Recomendação:</strong></p>
+<p>Antes de remover qualquer diretório, é sempre aconselhável verificar se ele está realmente vazio e se você tem certeza de que não precisa mais dele. Se houver arquivos importantes dentro do diretório, é crucial fazer um backup antes de prosseguir com a remoção.</p>
+<p><strong>Para mais informações sobre o comando rmdir, consulte a página de manual do comando via terminal:</strong></p>
+<div class="highlight"><pre><span></span><code>man rmdir
+</code></pre></div>
+
+<hr>
+<h3>7. rm</h3>
+<p>O comando <code>rm</code> significa <code>remove(remover)</code>. É usado para apagar arquivos do sistema de arquivos.</p>
+<p><strong>Função do comando rm:</strong></p>
+<ul>
+<li><strong>Remove arquivos:</strong> Permite eliminar arquivos específicos do seu sistema.</li>
+<li><strong>Libera espaço em disco:</strong> Ao remover arquivos desnecessários, você libera espaço de armazenamento no seu computador.</li>
+<li><strong>Funciona em diferentes locais:</strong> Você pode apagar arquivos no diretório atual, em subdiretórios existentes ou em qualquer outro local no sistema de arquivos, desde que tenha permissão para gravar naquele local.</li>
+</ul>
+<p><strong>Opções do comando rm:</strong></p>
+<p>O comando rm possui algumas opções que podem ser usadas para personalizar seu uso. Algumas das opções mais comuns são:</p>
+<ul>
+<li><strong>-f:</strong> <code>force(forçar)</code>. Remove o arquivo sem pedir confirmação, mesmo se o arquivo estiver protegido contra escrita..</li>
+<li><strong>-r:</strong> <code>recursive(recursivo)</code>. Remove o diretório e todo o seu conteúdo recursivamente</li>
+</ul>
+<p><strong>Exemplos:</strong></p>
+<p>Para remover um arquivo chamado "foto.jpg" no diretório atual, você digitaria:</p>
+<div class="highlight"><pre><span></span><code>rm foto.jpg
+</code></pre></div>
+
+<p>Para remover todos os arquivos .txt no diretório atual, você digitaria:</p>
+<div class="highlight"><pre><span></span><code>rm *.txt
+</code></pre></div>
+
+<p><strong>Observações importantes:</strong></p>
+<ul>
+<li><strong>Use o comando <code>rm</code> com cuidado, pois ele pode apagar arquivos permanentemente.</strong></li>
+<li><strong>Sempre faça backup de arquivos importantes antes de removê-los.</strong></li>
+<li>O comando <code>rm</code> não remove diretórios vazios. Utilize o comando <code>rmdir</code> para essa finalidade.</li>
+<li>Tenha cuidado ao usar opções como <code>-r</code> (remover recursivamente) e <code>-f</code> (forçar remoção sem confirmação), pois elas podem levar à perda acidental de dados.</li>
+</ul>
+<p><strong>Para mais informações sobre o comando rm, consulte a página de manual do comando via terminal:</strong></p>
+<div class="highlight"><pre><span></span><code>man rm
+</code></pre></div>
+
+<hr>
+<h3>8. cp</h3>
+<p>O comando <code>cp</code> significa <code>copy(copia)</code>. É usado para copiar arquivos de um local para outro no sistema de arquivos.</p>
+<p><strong>Função do comando cp:</strong></p>
+<ul>
+<li><strong>Copia arquivos:</strong> Permite duplicar arquivos existentes em diferentes locais do seu computador.</li>
+<li><strong>Cria backups:</strong> Uma das principais utilidades do <code>cp</code> é criar backups de arquivos importantes.</li>
+<li><strong>Organiza arquivos:</strong> Você pode usar o <code>cp</code> para organizar seus arquivos, copiando-os para pastas específicas.</li>
+</ul>
+<p><strong>Como usar o <code>cp</code>:</strong></p>
+<p>A sintaxe básica do comando <code>cp</code> é:</p>
+<div class="highlight"><pre><span></span><code><span class="n">cp</span><span class="w"> </span><span class="o">[</span><span class="n">opções</span><span class="o">]</span><span class="w"> </span><span class="n">arquivo_origem</span><span class="w"> </span><span class="n">arquivo_destino</span>
+</code></pre></div>
+
+<ul>
+<li><strong>opções:</strong> São opcionais e permitem especificar comportamentos específicos do comando, como copiar recursivamente dentro de diretórios, preservar permissões e atributos dos arquivos, etc.</li>
+<li><strong>arquivo_origem:</strong> É o nome do arquivo que você deseja copiar.</li>
+<li><strong>arquivo_destino:</strong> É o nome e local do arquivo copiado.</li>
+</ul>
+<p><strong>Exemplos:</strong></p>
+<p>Para copiar um arquivo chamado "foto.jpg" para o diretório "Imagens", você digitaria:</p>
+<div class="highlight"><pre><span></span><code>cp foto.jpg Imagens/
+</code></pre></div>
+
+<p>Para copiar todos os arquivos .txt do diretório atual para o diretório "Documentos", você digitaria:</p>
+<div class="highlight"><pre><span></span><code>cp *.txt Documentos/
+</code></pre></div>
+
+<p><strong>Observações importantes:</strong></p>
+<ul>
+<li>O comando <code>cp</code> não sobrescreve arquivos existentes por padrão. Se o arquivo de destino já existir, você será questionado se deseja sobrescrevê-lo.</li>
+<li>Use a opção <code>-f</code> para forçar a sobrescrição do arquivo de destino.</li>
+<li>Tenha cuidado ao usar opções como <code>-r</code> (copiar recursivamente) e <code>-f</code> (forçar sobrescrição), pois elas podem levar à perda acidental de dados.</li>
+</ul>
+<p><strong>Recomendação:</strong></p>
+<p>Sempre que possível, utilize o comando <code>rsync</code> ao invés de <code>cp</code> para copiar arquivos grandes ou diretórios. O <code>rsync</code> é mais eficiente e oferece recursos adicionais como sincronização de arquivos e pastas.</p>
+<p><strong>Dicas adicionais:</strong></p>
+<ul>
+<li>Você pode usar o comando <code>man cp</code> para obter mais informações sobre o comando <code>cp</code> e suas opções.</li>
+<li>Você pode usar o atalho <code>Ctrl+C</code> para cancelar a execução do comando <code>cp</code> a qualquer momento.</li>
+<li>Utilize a opção <code>-v</code> para ver o progresso da copiação do arquivo.</li>
+</ul>
+<p>Espero que esta resposta tenha sido útil! Se você tiver mais perguntas sobre o comando <code>cp</code> ou como usá-lo, fique à vontade para perguntar.</p>
+<p><strong>Para mais informações sobre o comando cp, consulte a página de manual do comando via terminal:</strong></p>
+<div class="highlight"><pre><span></span><code>man cp
+</code></pre></div>
+
+<hr>
+<h3>9. mv</h3>
+<p><strong>Para mais informações sobre o comando mv, consulte a página de manual do comando via terminal:</strong></p>
+<div class="highlight"><pre><span></span><code>man mv
+</code></pre></div>
+
+<h2>Informações do sistema:</h2>
+<ul>
+<li><code>date</code>: Mostra a data e hora atual.</li>
+<li><code>uptime</code>: Mostra o tempo que o sistema está ativo.</li>
+<li><code>whoami</code>: Mostra o nome do usuário atual.</li>
+<li><code>w</code>: Mostra os usuários que estão conectados no momento.</li>
+<li><code>cat /proc/cpuinfo</code>: Mostra informações sobre a CPU.</li>
+<li><code>cat /proc/meminfo</code>: Mostra informações sobre a memória.</li>
+<li><code>free</code>: Mostra a memória livre e usada.</li>
+<li><code>du</code>: Mostra o uso do espaço em disco.</li>
+<li><code>df</code>: Mostra o espaço livre em disco em cada partição.</li>
+<li><code>uname -a</code>: Mostra informações sobre o kernel.</li>
+</ul>
+<h2>Gerenciamento de arquivos:</h2>
+<ul>
+<li><code>tar cf file.tar files</code>: Cria um arquivo tar "file.tar" com os arquivos especificados.</li>
+<li><code>tar xf file.tar</code>: Extrai o conteúdo do arquivo tar "file.tar" no diretório atual.</li>
+<li><code>tar tf file.tar</code>: Mostra o conteúdo do arquivo tar "file.tar".</li>
+</ul>
+<h2>Rede:</h2>
+<ul>
+<li><code>ping host</code>: Envia pacotes ping para o host especificado.</li>
+<li><code>whois domain</code>: Mostra informações sobre o domínio especificado.</li>
+<li><code>dig domain</code>: Mostra informações de DNS para o domínio especificado.</li>
+<li><code>wget file</code>: Baixa o arquivo especificado da internet.</li>
+<li><code>curl url</code>: Mostra o conteúdo da página web especificada.</li>
+<li><code>ssh user@host</code>: Conecta-se ao host especificado como o usuário especificado.</li>
+</ul>
+<h2>Permissões:</h2>
+<ul>
+<li><code>chmod octal file</code>: Altera as permissões do arquivo especificado.</li>
+</ul>
+<h2>Outros:</h2>
+<ul>
+<li><code>ps</code>: Mostra os processos em execução.</li>
+<li><code>ps aux</code>: Mostra os processos em execução com mais detalhes.</li>
+<li><code>kill pid</code>: Mata o processo com o ID especificado.</li>
+<li><code>killall proc</code>: Mata todos os processos com o nome especificado.</li>
+<li><code>grep pattern files</code>: Procura o padrão especificado nos arquivos especificados.</li>
+<li><code>grep -r pattern dir</code>: Procura o padrão especificado recursivamente no diretório especificado.</li>
+<li><code>locate file</code>: Procura o arquivo especificado no sistema.</li>
+<li><code>whereis app</code>: Mostra os locais possíveis do aplicativo especificado.</li>
+<li><code>man command</code>: Mostra a página de manual do comando especificado.</li>
+</ul>
+        </article>
+
+        <footer>
+            <p>Postado em <a href="http://localhost:8000/category/linux.html">Linux</a>.</p>
+        </footer>
+
+
+    </div>
+
+
+<footer class="blog-footer">
+
+    <ul class="nav">
+                <li><a href="http://localhost:8000/pages/sobre-pt.html">Sobre</a></li>
+                <li><a href="http://localhost:8000/pages/portifolio-pt.html">Portfólio</a></li>
+            <li><a href="https://x.com/PriscylaCSantos" target="_blank">Twitter</a></li>
+            <li><a href="https://github.com/PriscylaSantos" target="_blank">Github</a></li>
+            <li><a href="https://www.linkedin.com/in/priscylacsantos" target="_blank">Linkedin</a></li>
+    </ul>
+
+    <p class="disclaimer">
+    Built with <a href="http://getpelican.com">Pelican</a>, and <a href="https://github.com/hdra/Pelican-Cid">Cid</a> theme.
+    </p>
+</footer>
+            </div>
+    </body>
+</html>

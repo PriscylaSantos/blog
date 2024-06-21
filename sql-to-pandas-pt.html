@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>    Um Guia Comparativo de Limpeza de Dados com SQL e Pandas
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://localhost:8000/theme/css/cid.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+            <div class="container">
+
+<header class="blog-header">
+    <h1><a href="http://localhost:8000">Blog</a></h1>
+    <p> Priscyla - Developer </p>
+    <nav>
+        <a href="http://localhost:8000/">INDEX</a> |
+        <a href="http://localhost:8000/archives">ARQUIVOS</a> |
+        <a href="http://localhost:8000/categories">CATEGORIAS</a> |
+        <a href="http://localhost:8000/tags">TAGS</a>
+    </nav>
+</header>
+
+    <div class="post">
+
+        <header>
+            <h1>Um Guia Comparativo de Limpeza de Dados com SQL e Pandas</h1>
+            <small class="date">
+                Por <b>Priscyla Santos</b> em <time datetime="2024-06-03T10:20:00-03:00">03 jun de 2024 às 10h20.</time>
+                <br>Atualizado em <time datetime="2024-06-05T19:30:00-03:00">05 jun de 2024 às 19h30.</time>
+            </small>
+        </header>
+
+        <article>
+            <style>body {text-align: justify}</style>
+
+<p>No campo da ciência de dados, a limpeza de dados é um passo fundamental que garante a precisão e a qualidade da análise de dados. Seja usando SQL para gerenciamento de banco de dados ou Pandas para manipulação de dados em Python, entender como limpar seus dados de forma eficaz é crucial. Este guia fornece uma visão comparativa das tarefas comuns de limpeza de dados realizadas em SQL e Pandas, com base no infográfico fornecido.</p>
+<hr>
+<h4>1. <strong>Remover Duplicatas</strong></h4>
+<ul>
+<li>SQL</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">tabela</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">MIN</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">tabela</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">coluna_duplicada</span><span class="p">);</span>
+</code></pre></div>
+
+<ul>
+<li>Pandas</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;coluna_duplicada&#39;</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Remover duplicatas é essencial para evitar análises distorcidas. SQL usa uma subconsulta para identificar e manter a primeira instância de registros duplicados. Em Pandas, <code>drop_duplicates</code> alcança o mesmo especificando a coluna e mantendo a primeira ocorrência.</p>
+<hr>
+<h4>2. <strong>Preencher Valores Ausentes com Zero</strong></h4>
+<ul>
+<li>SQL</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">tabela</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">coluna</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">coluna</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div>
+
+<ul>
+<li>Pandas</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;coluna&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Lidar com dados ausentes é crítico para manter a integridade do seu conjunto de dados. Tanto SQL quanto Pandas oferecem métodos diretos para substituir valores <code>NULL</code> por zeros.</p>
+<hr>
+<h4>3. <strong>Padronizar Nomes para Maiúsculas</strong></h4>
+<ul>
+<li>SQL</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">tabela</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">nome</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">UPPER</span><span class="p">(</span><span class="n">nome</span><span class="p">);</span>
+</code></pre></div>
+
+<ul>
+<li>Pandas</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;nome&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;nome&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+</code></pre></div>
+
+<p>A formatação consistente de dados textuais, como converter nomes para maiúsculas, ajuda a manter a uniformidade no conjunto de dados.</p>
+<hr>
+<h4>4. <strong>Remover Espaços em Branco Extras</strong></h4>
+<ul>
+<li>SQL</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">tabela</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">coluna</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">TRIM</span><span class="p">(</span><span class="n">coluna</span><span class="p">);</span>
+</code></pre></div>
+
+<ul>
+<li>Pandas</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;coluna&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;coluna&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Espaços em branco extras podem levar a imprecisões no processamento de dados. A função <code>TRIM</code> do SQL e o método <code>str.strip</code> do Pandas servem para eliminar espaços desnecessários.</p>
+<hr>
+<h4>5. <strong>Tratar Outliers - Definir Limite Superior</strong></h4>
+<ul>
+<li>SQL</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">tabela</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">valor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">limite_superior</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">valor</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">limite_superior</span><span class="p">;</span>
+</code></pre></div>
+
+<ul>
+<li>Pandas</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">limite_superior</span><span class="p">,</span> <span class="s1">&#39;valor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">limite_superior</span>
+</code></pre></div>
+
+<p>O tratamento de outliers é essencial para uma análise estatística robusta. Tanto SQL quanto Pandas permitem definir um limite para valores que excedem um determinado limite.</p>
+<hr>
+<h4>6. <strong>Converter String para Número (se possível)</strong></h4>
+<ul>
+<li>SQL</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">tabela</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">coluna_numerica</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">CAST</span><span class="p">(</span><span class="n">coluna_texto</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">);</span>
+</code></pre></div>
+
+<ul>
+<li>Pandas</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;coluna_numerica&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;coluna_texto&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Converter tipos de dados garante compatibilidade com operações analíticas. SQL e Pandas oferecem funções de conversão, com o Pandas fornecendo o parâmetro adicional <code>errors='coerce'</code> para lidar com erros de conversão de forma elegante.</p>
+<hr>
+<h4>7. <strong>Formatar Datas no Formato 'YYYY-MM-DD'</strong></h4>
+<ul>
+<li>SQL</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">tabela</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="k">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DATE_FORMAT</span><span class="p">(</span><span class="k">data</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<ul>
+<li>Pandas</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>A formatação de datas é essencial para consistência e comparabilidade. Tanto SQL quanto Pandas facilitam essa transformação com suas respectivas funções de formatação.</p>
+<hr>
+<h4>8. <strong>Tratar Valores Extremos (Limitar a um Intervalo)</strong></h4>
+<ul>
+<li>SQL</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">tabela</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">valor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">valor</span><span class="p">,</span><span class="w"> </span><span class="n">limite_inferior</span><span class="p">)</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">valor</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">limite_inferior</span><span class="p">;</span>
+</code></pre></div>
+
+<ul>
+<li>Pandas</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">limite_inferior</span><span class="p">,</span> <span class="s1">&#39;valor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">limite_inferior</span>
+</code></pre></div>
+
+<p>Para garantir que os dados estejam dentro de um intervalo razoável, SQL e Pandas oferecem mecanismos para ajustar valores que estão fora dos limites especificados.</p>
+<hr>
+<h4>9. <strong>Remover Caracteres Especiais (Exceto Alfanuméricos)</strong></h4>
+<ul>
+<li>SQL</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">tabela</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">coluna_texto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">REGEXP_REPLACE</span><span class="p">(</span><span class="n">coluna_texto</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;[^A-Za-z0-9 ]&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<ul>
+<li>Pandas</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;coluna_texto&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;coluna_texto&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;[^A-Za-z0-9 ]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<p>A limpeza de dados textuais, removendo caracteres especiais, ajuda na padronização das entradas e melhora a qualidade dos dados.</p>
+<hr>
+<h4>10. <strong>Excluir Registros com Valores Ausentes</strong></h4>
+<ul>
+<li>SQL</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">tabela</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">coluna</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div>
+
+<ul>
+<li>Pandas</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;coluna&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Excluir registros incompletos é, por vezes, necessário para garantir a confiabilidade da análise. Tanto SQL quanto Pandas fornecem métodos para eliminar registros com valores ausentes em colunas especificadas.</p>
+<hr>
+<p>Dominar técnicas de limpeza de dados tanto em SQL quanto em Pandas te equipa com ferramentas versáteis para manter alta qualidade de dados, essencial para qualquer processo de tomada de decisão baseado em dados. Cada plataforma tem seus pontos fortes, e entender suas funcionalidades aumenta sua eficiência nas tarefas de pré-processamento de dados.</p>
+        </article>
+
+        <footer>
+            <p>Postado em <a href="http://localhost:8000/category/python.html">Python</a>.</p>
+        </footer>
+
+
+    </div>
+
+
+<footer class="blog-footer">
+
+    <ul class="nav">
+                <li><a href="http://localhost:8000/pages/sobre-pt.html">Sobre</a></li>
+                <li><a href="http://localhost:8000/pages/portifolio-pt.html">Portfólio</a></li>
+            <li><a href="https://x.com/PriscylaCSantos" target="_blank">Twitter</a></li>
+            <li><a href="https://github.com/PriscylaSantos" target="_blank">Github</a></li>
+            <li><a href="https://www.linkedin.com/in/priscylacsantos" target="_blank">Linkedin</a></li>
+    </ul>
+
+    <p class="disclaimer">
+    Built with <a href="http://getpelican.com">Pelican</a>, and <a href="https://github.com/hdra/Pelican-Cid">Cid</a> theme.
+    </p>
+</footer>
+            </div>
+    </body>
+</html>

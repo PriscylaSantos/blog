@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>    Serializers no Django Rest Framework
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://localhost:8000/theme/css/cid.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+            <div class="container">
+
+<header class="blog-header">
+    <h1><a href="http://localhost:8000">Blog</a></h1>
+    <p> Priscyla - Developer </p>
+    <nav>
+        <a href="http://localhost:8000/">INDEX</a> |
+        <a href="http://localhost:8000/archives">ARQUIVOS</a> |
+        <a href="http://localhost:8000/categories">CATEGORIAS</a> |
+        <a href="http://localhost:8000/tags">TAGS</a>
+    </nav>
+</header>
+
+    <div class="post">
+
+        <header>
+            <h1>Serializers no Django Rest Framework</h1>
+            <small class="date">
+                Por <b>Priscyla Santos</b> em <time datetime="2024-03-01T10:20:00-03:00">01 mar de 2024 às 10h20.</time>
+                <br>Atualizado em <time datetime="2024-06-10T19:30:00-03:00">10 jun de 2024 às 19h30.</time>
+            </small>
+        </header>
+
+        <article>
+            <style>body {text-align: justify}</style>
+
+<p>Serializers são elementos fundamentais no Django Rest Framework (DRF). Eles desempenham um papel crucial na comunicação entre a API e o cliente, formatando dados de modelos Django para JSON, XML ou outros formatos serializados e vice-versa.</p>
+<p>Este texto aprofundado, com base na documentação oficial do DRF, oferece uma compreensão abrangente dos serializers, explorando seus recursos e funcionalidades em detalhes.</p>
+<h3>Funcionalidades Essenciais</h3>
+<p>Um serializer no DRF é uma classe que lida com a conversão entre objetos de modelo complexos e tipos de dados Python primitivos, que podem ser facilmente renderizados em JSON, XML ou outros tipos de conteúdo. Os serializers do DRF permitem:</p>
+<ul>
+<li><strong>Serialização:</strong> converte objetos Python em representações serializadas em formatos como JSON, XML ou HTML.</li>
+<li><strong>Desserialização:</strong> converte dados de requisições HTTP em objetos Python que podem ser manipulados pelo Django.</li>
+<li><strong>Validação:</strong> garante que os dados recebidos nas requisições sejam válidos e consistentes com o modelo de dados do Django.</li>
+</ul>
+<p>A criação de serializers envolve a definição de uma classe que herda de <code>serializers.Serializer</code> ou  de outros tipos de serializers como <code>serializers.ModelSerializer</code>. A classe define os campos a serem serializados, seus tipos de dados e outras opções de serialização. </p>
+<p>Abaixo temos um exemplo de como criar um serializer:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">serializers</span>
+
+<span class="k">class</span> <span class="nc">Comment</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">created</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">email</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">content</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">created</span> <span class="o">=</span> <span class="n">created</span> <span class="ow">or</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+
+<span class="n">comment</span> <span class="o">=</span> <span class="n">Comment</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="s1">&#39;leila@example.com&#39;</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="s1">&#39;foo bar&#39;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">CommentSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">):</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">EmailField</span><span class="p">()</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">created</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">()</span>
+</code></pre></div>
+
+<h4>Transformando Modelos em JSON</h4>
+<p>O processo de serialização converte objetos de modelo em representações JSON. O DRF fornece métodos convenientes para serializar objetos únicos ou conjuntos de objetos.</p>
+<div class="highlight"><pre><span></span><code><span class="n">serializer</span> <span class="o">=</span> <span class="n">CommentSerializer</span><span class="p">(</span><span class="n">comment</span><span class="p">)</span>
+<span class="n">serializer</span><span class="o">.</span><span class="n">data</span>
+<span class="p">{</span><span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="s1">&#39;leila@example.com&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;foo bar&#39;</span><span class="p">,</span> <span class="s1">&#39;created&#39;</span><span class="p">:</span> <span class="s1">&#39;2016-01-27T15:17:10.375877&#39;</span><span class="p">}</span>
+</code></pre></div>
+
+<h4>Reconstruindo Modelos a partir de JSON</h4>
+<p>A desserialização converte dados JSON em objetos de modelo. O DRF permite a criação de novos objetos ou a atualização de objetos existentes através da desserialização.</p>
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;foo bar&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="s1">&#39;leila@example.com&#39;</span><span class="p">,</span> <span class="s1">&#39;created&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()}</span>
+<span class="n">serializer</span> <span class="o">=</span> <span class="n">CommentSerializer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="n">serializer</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span>
+<span class="kc">True</span>
+<span class="n">serializer</span><span class="o">.</span><span class="n">validated_data</span>
+</code></pre></div>
+
+<h4>Protegendo sua API contra dados inválidos</h4>
+<p>A validação é crucial para garantir a integridade dos dados. Os serializers do DRF oferecem várias formas de validar dados, incluindo validações a nível de campo e a nível de objeto. </p>
+<ul>
+<li><strong>Validadores de campo:</strong> garantem que cada campo individual atenda aos requisitos específicos.</li>
+<li><strong>Validadores de serializer:</strong> permitem validações complexas que envolvem vários campos.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">serializer</span> <span class="o">=</span> <span class="n">CommentSerializer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="s1">&#39;foobar&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;baz&#39;</span><span class="p">})</span>
+<span class="n">serializer</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span>
+<span class="kc">False</span>
+<span class="n">serializer</span><span class="o">.</span><span class="n">errors</span>
+<span class="p">{</span><span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Enter a valid e-mail address.&#39;</span><span class="p">],</span> <span class="s1">&#39;created&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;This field is required.&#39;</span><span class="p">]}</span>
+</code></pre></div>
+
+<h4>Criando e Atualizando Instâncias</h4>
+<p>Os serializers também lidam com a criação e atualização de instâncias de modelos. 
+Serializers fornecem acesso aos dados iniciais recebidos da requisição e à instância do modelo que está sendo serializada ou desserializada. 
+Isso permite a implementação de funcionalidades avançadas.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">CommentSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">):</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">EmailField</span><span class="p">()</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">created</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validated_data</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Comment</span><span class="p">(</span><span class="o">**</span><span class="n">validated_data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">validated_data</span><span class="p">):</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">email</span><span class="p">)</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">created</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;created&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">created</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">instance</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Cria um nova instância (create)</span>
+<span class="n">serializer</span> <span class="o">=</span> <span class="n">CommentSerializer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Atualiza uma instância já exixtente (update)</span>
+<span class="n">serializer</span> <span class="o">=</span> <span class="n">CommentSerializer</span><span class="p">(</span><span class="n">comment</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Práticas Recomendadas</h3>
+<ul>
+<li><strong>Uso de ModelSerializer</strong>: Quando possível, use <code>ModelSerializer</code> para aproveitar a geração automática de campos e métodos de criação/atualização, o que reduz o código necessário.</li>
+<li><strong>Validação</strong>: Aproveite as capacidades de validação do DRF para manter a integridade dos dados. Isso inclui validações a nível de campo, a nível de objeto e validadores personalizados.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="k">class</span> <span class="nc">Snippet</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">created</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">code</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+    <span class="n">linenos</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">language</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">style</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;friendly&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">SnippetSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Snippet</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">,</span> <span class="s1">&#39;linenos&#39;</span><span class="p">,</span> <span class="s1">&#39;language&#39;</span><span class="p">,</span> <span class="s1">&#39;style&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+<ul>
+<li><strong>Campos Somente Leitura</strong>: Use o atributo read_only=True em campos que não devem ser alterados diretamente pelos usuários através da API.</li>
+<li><strong>Nested Serializers</strong>: Para relações complexas, você pode usar serializers aninhados para representar relações de um para muitos ou muitos para muitos.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">UserSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">):</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">EmailField</span><span class="p">()</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">CommentSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">):</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">UserSerializer</span><span class="p">()</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">created</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">read_only</span><span class="o">=</span><span class="kc">True</span> <span class="p">)</span>
+</code></pre></div>
+
+<h3>Conclusão</h3>
+<p>Este texto abordou os conceitos básicos e algumas práticas recomendadas para trabalhar com serializers no Django REST Framework. Para um aprofundamento, é altamente recomendável consultar a documentação oficial do DRF, que fornece informações detalhadas e exemplos específicos para diferentes casos de uso.</p>
+<p>Serializers são ferramentas poderosas que facilitam a criação de APIs RESTful robustas e eficientes. Ao dominar os conceitos e funcionalidades dos serializers, você estará pronto para construir APIs que atendem às necessidades específicas do seu projeto.</p>
+<p><strong>Referências</strong></p>
+<ul>
+<li>Documentação oficial do Django Rest Framework: <a href="https://www.django-rest-framework.org/api-guide/serializers/">https://www.django-rest-framework.org/api-guide/serializers/</a></li>
+<li>Tutorial sobre Serializers no Django Rest Framework: <a href="https://www.django-rest-framework.org/tutorial/1-serialization/">https://www.django-rest-framework.org/tutorial/1-serialization/</a></li>
+</ul>
+        </article>
+
+        <footer>
+            <p>Postado em <a href="http://localhost:8000/category/django.html">Django</a>.</p>
+        </footer>
+
+
+    </div>
+
+
+<footer class="blog-footer">
+
+    <ul class="nav">
+                <li><a href="http://localhost:8000/pages/sobre-pt.html">Sobre</a></li>
+                <li><a href="http://localhost:8000/pages/portifolio-pt.html">Portfólio</a></li>
+            <li><a href="https://x.com/PriscylaCSantos" target="_blank">Twitter</a></li>
+            <li><a href="https://github.com/PriscylaSantos" target="_blank">Github</a></li>
+            <li><a href="https://www.linkedin.com/in/priscylacsantos" target="_blank">Linkedin</a></li>
+    </ul>
+
+    <p class="disclaimer">
+    Built with <a href="http://getpelican.com">Pelican</a>, and <a href="https://github.com/hdra/Pelican-Cid">Cid</a> theme.
+    </p>
+</footer>
+            </div>
+    </body>
+</html>

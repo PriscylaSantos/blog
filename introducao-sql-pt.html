@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>    Comandos Básicos do SQL
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://localhost:8000/theme/css/cid.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+            <div class="container">
+
+<header class="blog-header">
+    <h1><a href="http://localhost:8000">Blog</a></h1>
+    <p> Priscyla - Developer </p>
+    <nav>
+        <a href="http://localhost:8000/">INDEX</a> |
+        <a href="http://localhost:8000/archives">ARQUIVOS</a> |
+        <a href="http://localhost:8000/categories">CATEGORIAS</a> |
+        <a href="http://localhost:8000/tags">TAGS</a>
+    </nav>
+</header>
+
+    <div class="post">
+
+        <header>
+            <h1>Comandos Básicos do SQL</h1>
+            <small class="date">
+                Por <b>Priscyla Santos</b> em <time datetime="2024-06-01T20:29:00-03:00">01 jun de 2024 às 20h29.</time>
+                <br>Atualizado em <time datetime="2024-06-10T19:30:00-03:00">10 jun de 2024 às 19h30.</time>
+            </small>
+        </header>
+
+        <article>
+            <style>body {text-align: justify}</style>
+
+<p>O SQL (Structured Query Language) é uma linguagem padrão utilizada para gerenciar e manipular bancos de dados relacionais. Abaixo, exploramos os principais comandos básicos do SQL, essenciais para a administração e operação de dados em um sistema de gerenciamento de banco de dados.</p>
+<h3>1. <strong>SELECT</strong></h3>
+<p>O comando <code>SELECT</code> é utilizado para consultar dados de uma ou mais tabelas no banco de dados. Ele permite especificar quais colunas deseja-se visualizar.</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">coluna1</span><span class="p">,</span><span class="w"> </span><span class="n">coluna2</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">nome_da_tabela</span><span class="p">;</span>
+</code></pre></div>
+
+<p>Exemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">nome</span><span class="p">,</span><span class="w"> </span><span class="n">idade</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">alunos</span><span class="p">;</span>
+</code></pre></div>
+
+<h3>2. <strong>INSERT</strong></h3>
+<p>O comando <code>INSERT</code> insere novos registros em uma tabela.</p>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">nome_da_tabela</span><span class="w"> </span><span class="p">(</span><span class="n">coluna1</span><span class="p">,</span><span class="w"> </span><span class="n">coluna2</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">valor1</span><span class="p">,</span><span class="w"> </span><span class="n">valor2</span><span class="p">);</span>
+</code></pre></div>
+
+<p>Exemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">alunos</span><span class="w"> </span><span class="p">(</span><span class="n">nome</span><span class="p">,</span><span class="w"> </span><span class="n">idade</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;João&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span>
+</code></pre></div>
+
+<h3>3. <strong>UPDATE</strong></h3>
+<p>O comando <code>UPDATE</code> é utilizado para modificar registros existentes em uma tabela.</p>
+<div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">nome_da_tabela</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">coluna1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">valor1</span><span class="p">,</span><span class="w"> </span><span class="n">coluna2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">valor2</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">condição</span><span class="p">;</span>
+</code></pre></div>
+
+<p>Exemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">alunos</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">idade</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">21</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">nome</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;João&#39;</span><span class="p">;</span>
+</code></pre></div>
+
+<h3>4. <strong>DELETE</strong></h3>
+<p>O comando <code>DELETE</code> remove registros de uma tabela.</p>
+<div class="highlight"><pre><span></span><code><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">nome_da_tabela</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">condição</span><span class="p">;</span>
+</code></pre></div>
+
+<p>Exemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">alunos</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">nome</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;João&#39;</span><span class="p">;</span>
+</code></pre></div>
+
+<h3>5. <strong>CREATE TABLE</strong></h3>
+<p>O comando <code>CREATE TABLE</code> cria uma nova tabela no banco de dados.</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">nome_da_tabela</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">coluna1</span><span class="w"> </span><span class="n">tipo_de_dado</span><span class="p">,</span>
+<span class="w">  </span><span class="n">coluna2</span><span class="w"> </span><span class="n">tipo_de_dado</span><span class="p">,</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="p">);</span>
+</code></pre></div>
+
+<p>Exemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">alunos</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">  </span><span class="n">nome</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+<span class="w">  </span><span class="n">idade</span><span class="w"> </span><span class="nb">INT</span>
+<span class="p">);</span>
+</code></pre></div>
+
+<h3>6. <strong>DROP TABLE</strong></h3>
+<p>O comando <code>DROP TABLE</code> exclui uma tabela existente e todos os seus dados.</p>
+<div class="highlight"><pre><span></span><code><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">nome_da_tabela</span><span class="p">;</span>
+</code></pre></div>
+
+<p>Exemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">alunos</span><span class="p">;</span>
+</code></pre></div>
+
+<h3>7. <strong>ALTER TABLE</strong></h3>
+<p>O comando <code>ALTER TABLE</code> modifica a estrutura de uma tabela existente, como adicionar, alterar ou excluir colunas.</p>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">nome_da_tabela</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="n">nova_coluna</span><span class="w"> </span><span class="n">tipo_de_dado</span><span class="p">;</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">nome_da_tabela</span><span class="w"> </span><span class="k">MODIFY</span><span class="w"> </span><span class="n">coluna_existente</span><span class="w"> </span><span class="n">novo_tipo_de_dado</span><span class="p">;</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">nome_da_tabela</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">coluna_existente</span><span class="p">;</span>
+</code></pre></div>
+
+<p>Exemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">alunos</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">alunos</span><span class="w"> </span><span class="k">MODIFY</span><span class="w"> </span><span class="n">idade</span><span class="w"> </span><span class="nb">SMALLINT</span><span class="p">;</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">alunos</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">email</span><span class="p">;</span>
+</code></pre></div>
+
+<h3>8. <strong>JOIN</strong></h3>
+<p>O comando <code>JOIN</code> combina registros de duas ou mais tabelas com base em uma coluna relacionada entre elas.</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">tabela1</span><span class="p">.</span><span class="n">coluna1</span><span class="p">,</span><span class="w"> </span><span class="n">tabela2</span><span class="p">.</span><span class="n">coluna2</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">tabela1</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">tabela2</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">tabela1</span><span class="p">.</span><span class="n">coluna_comum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tabela2</span><span class="p">.</span><span class="n">coluna_comum</span><span class="p">;</span>
+</code></pre></div>
+
+<p>Exemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">alunos</span><span class="p">.</span><span class="n">nome</span><span class="p">,</span><span class="w"> </span><span class="n">cursos</span><span class="p">.</span><span class="n">nome_do_curso</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">alunos</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">cursos</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">alunos</span><span class="p">.</span><span class="n">id_curso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cursos</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+</code></pre></div>
+
+<h2>Conclusão</h2>
+<p>Compreender e saber utilizar os comandos básicos do SQL é fundamental para gerenciar eficientemente um banco de dados relacional. Esses comandos permitem criar, modificar, consultar e excluir dados, oferecendo uma base sólida para operações mais avançadas em SQL.</p>
+        </article>
+
+        <footer>
+            <p>Postado em <a href="http://localhost:8000/category/database.html">Database</a>.</p>
+        </footer>
+
+
+    </div>
+
+
+<footer class="blog-footer">
+
+    <ul class="nav">
+                <li><a href="http://localhost:8000/pages/sobre-pt.html">Sobre</a></li>
+                <li><a href="http://localhost:8000/pages/portifolio-pt.html">Portfólio</a></li>
+            <li><a href="https://x.com/PriscylaCSantos" target="_blank">Twitter</a></li>
+            <li><a href="https://github.com/PriscylaSantos" target="_blank">Github</a></li>
+            <li><a href="https://www.linkedin.com/in/priscylacsantos" target="_blank">Linkedin</a></li>
+    </ul>
+
+    <p class="disclaimer">
+    Built with <a href="http://getpelican.com">Pelican</a>, and <a href="https://github.com/hdra/Pelican-Cid">Cid</a> theme.
+    </p>
+</footer>
+            </div>
+    </body>
+</html>

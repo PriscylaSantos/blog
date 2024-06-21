@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>    Guia Completo do Git para Desenvolvedores: Dominando o Controle de Versão
+</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Merriweather:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://localhost:8000/theme/css/cid.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+            <div class="container">
+
+<header class="blog-header">
+    <h1><a href="http://localhost:8000">Blog</a></h1>
+    <p> Priscyla - Developer </p>
+    <nav>
+        <a href="http://localhost:8000/">INDEX</a> |
+        <a href="http://localhost:8000/archives">ARQUIVOS</a> |
+        <a href="http://localhost:8000/categories">CATEGORIAS</a> |
+        <a href="http://localhost:8000/tags">TAGS</a>
+    </nav>
+</header>
+
+    <div class="post">
+
+        <header>
+            <h1>Guia Completo do Git para Desenvolvedores: Dominando o Controle de Versão</h1>
+            <small class="date">
+                Por <b>Priscyla Santos</b> em <time datetime="2024-06-10T10:20:00-03:00">10 jun de 2024 às 10h20.</time>
+                <br>Atualizado em <time datetime="2024-06-17T19:30:00-03:00">17 jun de 2024 às 19h30.</time>
+            </small>
+        </header>
+
+        <article>
+            <style>body {text-align: justify}</style>
+
+<p>No mundo do desenvolvimento de software, o Git é uma ferramenta indispensável para controle de versão e colaboração. Como desenvolvedora, utilizo o Git diariamente para gerenciar projetos com eficiência. Este artigo é um guia prático, desmistificando comandos essenciais do Git para desenvolvedores de todos os níveis.</p>
+<hr>
+<h2>Criando um Repositório</h2>
+<p><strong>Do zero - Criar um novo repositório local:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>init<span class="w"> </span><span class="o">[</span>nome_do_projeto<span class="o">]</span>
+</code></pre></div>
+
+<p>Para começar um novo projeto, utilize o comando <code>git init</code>. Isso cria um novo repositório Git em um diretório vazio. Exemplo:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>init<span class="w"> </span>meu_projeto
+</code></pre></div>
+
+<p>Isso inicializa um repositório vazio no diretório "meu_projeto".</p>
+<p><strong>Baixar de um repositório existente:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span><span class="o">[</span>url_do_repositório<span class="o">]</span>
+</code></pre></div>
+
+<p>Para obter uma cópia de um projeto já existente, use <code>git clone</code> seguido da URL do repositório:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/usuario/projeto.git
+</code></pre></div>
+
+<p>Isso cria uma cópia completa do repositório em seu sistema local.</p>
+<hr>
+<h2>Observando Seu Repositório</h2>
+<p><strong>Listar novos arquivos ou arquivos modificados ainda não comitados:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>status
+</code></pre></div>
+
+<p>O comando <code>git status</code> é usado para verificar o status do repositório. Ele mostra quais arquivos foram modificados e quais estão prontos para serem comitados.</p>
+<p><strong>Mostrar as mudanças em arquivos que ainda não foram 'stageados':</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>diff
+</code></pre></div>
+
+<p>Para ver as mudanças realizadas em arquivos antes de prepará-los para o commit, utilize <code>git diff</code>. Este comando mostra as diferenças entre seu diretório de trabalho e a área de staging.</p>
+<p><strong>Mostrar as mudanças em arquivos 'stageados':</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>diff<span class="w"> </span>--cached
+</code></pre></div>
+
+<p>Depois de usar <code>git add</code>, você pode ver as mudanças preparadas para commit com <code>git diff --cached</code>.</p>
+<p><strong>Mostrar todas as mudanças (stageadas e não stageadas):</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>diff<span class="w"> </span>HEAD
+</code></pre></div>
+
+<p>Para visualizar todas as alterações no seu repositório, tanto as preparadas quanto as não preparadas para commit, use <code>git diff HEAD</code>.</p>
+<p><strong>Mostrar diferenças entre dois commits:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>diff<span class="w"> </span>commit1<span class="w"> </span>commit2
+</code></pre></div>
+
+<p>Se precisar comparar dois commits específicos, <code>git diff commit1 commit2</code> mostra as diferenças entre eles.</p>
+<p><strong>Listar alterações e autores para um arquivo:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>blame<span class="w"> </span><span class="o">[</span>arquivo<span class="o">]</span>
+</code></pre></div>
+
+<p>Quer saber quem fez o quê em um arquivo? <code>git blame</code> mostra o autor de cada linha de um arquivo, útil para rastrear mudanças.</p>
+<p><strong>Mostrar as mudanças de um commit para um arquivo específico:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>show<span class="w"> </span><span class="o">[</span>commit<span class="o">]</span>:<span class="o">[</span>arquivo<span class="o">]</span>
+</code></pre></div>
+
+<p>Para ver as alterações de um commit específico em um arquivo, use <code>git show</code>.</p>
+<p><strong>Mostrar o histórico completo de commits:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>log
+</code></pre></div>
+
+<p>O comando <code>git log</code> exibe o histórico de commits do repositório, incluindo mensagens de commit, autores e datas.</p>
+<p><strong>Mostrar o histórico de mudanças para um arquivo ou diretório específico, incluindo diffs:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>-p<span class="w"> </span><span class="o">[</span>arquivo/diretório<span class="o">]</span>
+</code></pre></div>
+
+<p>Para um histórico detalhado com diferenças incluídas, use <code>git log -p</code>.</p>
+<hr>
+<h2>Trabalhando com Branches</h2>
+<p><strong>Listar todas as branches locais:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>branch
+</code></pre></div>
+
+<p>Para ver todas as branches locais do seu repositório, <code>git branch</code> lista elas.</p>
+<p><strong>Listar todas as branches, locais e remotas:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-av
+</code></pre></div>
+
+<p>Para uma visão completa de todas as branches, locais e remotas, use <code>git branch -av</code>.</p>
+<p><strong>Alternar para uma branch e atualizar o diretório de trabalho:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span><span class="o">[</span>nome_da_branch<span class="o">]</span>
+</code></pre></div>
+
+<p>Para mudar de branch, use <code>git checkout</code> seguido do nome da branch desejada.</p>
+<p><strong>Criar uma nova branch:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span><span class="o">[</span>nova_branch<span class="o">]</span>
+</code></pre></div>
+
+<p>Crie uma nova branch com <code>git branch</code>, útil para iniciar novos recursos ou correções.</p>
+<p><strong>Deletar uma branch:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span><span class="o">[</span>branch<span class="o">]</span>
+</code></pre></div>
+
+<p>Para remover uma branch que não é mais necessária, utilize <code>git branch -d</code>.</p>
+<p><strong>Mesclar uma branch em outra:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span><span class="o">[</span>branch_b<span class="o">]</span>
+$<span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span><span class="o">[</span>branch_a<span class="o">]</span>
+</code></pre></div>
+
+<p>Para mesclar mudanças de uma branch em outra, primeiro faça checkout da branch de destino, depois use <code>git merge</code>.</p>
+<p><strong>Taguear o commit atual:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>tag<span class="w"> </span><span class="o">[</span>nome_da_tag<span class="o">]</span>
+</code></pre></div>
+
+<p>Para marcar um ponto específico na história do seu repositório, como uma versão lançada, use <code>git tag</code>.</p>
+<hr>
+<h2>Fazendo Mudanças</h2>
+<p><strong>Preparar o arquivo para commit:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span><span class="o">[</span>arquivo<span class="o">]</span>
+</code></pre></div>
+
+<p>Para preparar um arquivo para commit, use <code>git add</code>.</p>
+<p><strong>Preparar todos os arquivos modificados para commit:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>.
+</code></pre></div>
+
+<p>Para preparar todos os arquivos modificados no diretório atual, utilize <code>git add .</code>.</p>
+<p><strong>Comitar todas as alterações 'stageadas' com uma mensagem:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;mensagem do commit&quot;</span>
+</code></pre></div>
+
+<p>Para salvar suas alterações no histórico de commits, use <code>git commit</code> com uma mensagem descritiva.</p>
+<p><strong>Comitar todas as alterações 'tracked' com uma mensagem:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </span><span class="s2">&quot;mensagem do commit&quot;</span>
+</code></pre></div>
+
+<p>Para preparar e comitar todas as alterações em um único comando, use <code>git commit -am</code>.</p>
+<p><strong>Desfazer o 'stage' de um arquivo, mantendo as alterações:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span><span class="o">[</span>arquivo<span class="o">]</span>
+</code></pre></div>
+
+<p>Se você preparou um arquivo por engano, <code>git reset</code> remove-o da área de staging, mantendo as mudanças no diretório de trabalho.</p>
+<p><strong>Reverter tudo para o último commit:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>--hard
+</code></pre></div>
+
+<p>Para desfazer todas as mudanças e retornar ao estado do último commit, use <code>git reset --hard</code>.</p>
+<hr>
+<h2>Sincronização</h2>
+<p><strong>Obter as últimas mudanças da origem (sem mescla):</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>fetch
+</code></pre></div>
+
+<p>Para atualizar seu repositório local com as mudanças do repositório remoto, use <code>git fetch</code>.</p>
+<p><strong>Obter as últimas mudanças da origem e mesclar:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>pull
+</code></pre></div>
+
+<p>Para buscar e mesclar as mudanças do repositório remoto em sua branch atual, use <code>git pull</code>.</p>
+<p><strong>Obter as últimas mudanças da origem e rebasear:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>--rebase
+</code></pre></div>
+
+<p>Para buscar as últimas mudanças e rebasear sua branch atual, use <code>git pull --rebase</code>.</p>
+<p><strong>Enviar as mudanças locais para a origem:</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>push
+</code></pre></div>
+
+<p>Para enviar suas mudanças locais para o repositório remoto, use <code>git push</code>.</p>
+<hr>
+<h2>Conclusão</h2>
+<p>Dominar o Git é essencial para qualquer desenvolvedor. Com este guia, você está equipado para gerenciar seu código de forma eficiente e colaborar melhor com sua equipe. Para mais informações, consulte a documentação oficial do Git ou participe de treinamentos disponíveis no <a href="https://training.github.com/">GitHub Training</a>.</p>
+<p>Quando estiver em dúvida, lembre-se de que a ajuda está sempre à mão:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span><span class="nb">command</span><span class="w"> </span>--help
+</code></pre></div>
+
+<p>Vamos melhorar nosso fluxo de trabalho e elevar a qualidade dos nossos projetos com Git! 🚀</p>
+        </article>
+
+        <footer>
+            <p>Postado em <a href="http://localhost:8000/category/git.html">Git</a>.</p>
+        </footer>
+
+
+    </div>
+
+
+<footer class="blog-footer">
+
+    <ul class="nav">
+                <li><a href="http://localhost:8000/pages/sobre-pt.html">Sobre</a></li>
+                <li><a href="http://localhost:8000/pages/portifolio-pt.html">Portfólio</a></li>
+            <li><a href="https://x.com/PriscylaCSantos" target="_blank">Twitter</a></li>
+            <li><a href="https://github.com/PriscylaSantos" target="_blank">Github</a></li>
+            <li><a href="https://www.linkedin.com/in/priscylacsantos" target="_blank">Linkedin</a></li>
+    </ul>
+
+    <p class="disclaimer">
+    Built with <a href="http://getpelican.com">Pelican</a>, and <a href="https://github.com/hdra/Pelican-Cid">Cid</a> theme.
+    </p>
+</footer>
+            </div>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}
+    {{ article.title|striptags}}
+{% endblock title %}
+
+{% block content %}
+
+    <div class="post">
+
+        <header>
+            <h1>{{ article.title }}</h1>
+            <small class="date">
+                Por <b>{{ article.author }}</b> em <time datetime="{{ article.date.isoformat() }}">{{ article.date.strftime('%d %b de %Y às %Hh%M') }}.</time>
+                {% if article.modified %}
+                <br>Atualizado em <time datetime="{{ article.modified.isoformat() }}">{{ article.modified.strftime('%d %b de %Y às %Hh%M') }}.</time>
+                {% endif %}
+            </small>
+        </header>
+
+        <article>
+            {{ article.content }}
+        </article>
+
+        <footer>
+            <p>Postado em <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>.</p>
+        </footer>
+
+        {% include "disqus.html" %}
+
+    </div>
+
+{% endblock content %}

@@ -1,6 +1,12 @@
 AUTHOR = 'Priscyla Santos'
 SITENAME = 'Blog'
-SITEURL = ""
+SITEURL = "http://localhost:8000"
+SITETITLE = "Priscyla Santos"
+SITESUBTITLE = "Priscyla - Developer"
+SITEDESCRIPTION = "Blog"
+SITELOGO = SITEURL + "/images/octocat.png"
+FAVICON = SITEURL + "/images/favicon.ico"
+
 
 PATH = "content"
 
@@ -25,6 +31,32 @@ CUSTOM_MENUITEMS = (
 )
 
 DEFAULT_PAGINATION = 10
+
+GITHUB_URL = "https://github.com/PriscylaSantos"
+CONTACTS = (
+    ("twitter", "https://x.com/PriscylaCSantos"),
+    ("github", GITHUB_URL),
+    ("linkedin", "https://www.linkedin.com/in/priscylacsantos"),
+)
+
+MAIN_MENU = True
+MENUITEMS = (
+    ("Arquivos", "/archives.html"),
+    ("Categorias", "/categories.html"),
+    ("Tags", "/tags.html"),
+)
+
+STATIC_PATHS = [
+    "images",
+]
+
+CC_LICENSE = {
+    "name": "Creative Commons Attribution-ShareAlike 4.0 International License",
+    "version": "4.0",
+    "slug": "by-sa",
+    "icon": True,
+    "language": "en_US",
+}
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True

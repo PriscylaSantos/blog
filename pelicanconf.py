@@ -1,6 +1,6 @@
 AUTHOR = 'Priscyla Santos'
 SITENAME = 'Blog'
-SITEURL = "http://localhost:8000"
+SITEURL = "https://priscylasantos.github.io/blog/"
 SITETITLE = "Priscyla Santos"
 SITESUBTITLE = "Priscyla - Developer"
 SITEDESCRIPTION = "Blog"
